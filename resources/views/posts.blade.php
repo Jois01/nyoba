@@ -11,7 +11,7 @@
             in
             <a href="/categories/{{ $post->category->slug }}" class="text-base text-gray-500 hover:underline">{{ $post->category->name }}</a> | {{ $post->created_at->format('l, j F Y') }}
         </div>
-        <p class="my-4 font-light">{{ Str::limit($post ['body'], 150)}}</p>
+        <p class="my-4 font-light">{!! Str::limit($post ['body'], 150) !!}</p>
         <a href="/posts/{{ $post ['slug'] }}" class="text-base text-medium text-blue-400 hover:underline">Read more &raquo;</a>
     </article>
     @endforeach
