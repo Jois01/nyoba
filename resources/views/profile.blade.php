@@ -3,7 +3,7 @@
     <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
             @if (Auth::user()->photo)
-            <img src="{{ asset(Auth::user()->photo) }}" alt="Profile Photo" class="w-32 h-32 rounded-full">
+            <img src="{{ asset(Auth::user()->photo) }}" alt="Profile Photo" class="w-32 ">
         @endif
         </a>
         <div class="p-5">

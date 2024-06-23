@@ -108,19 +108,14 @@ class PostController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
-        // Mengambil pengguna yang sedang login
         $user = Auth::user();
     
-        // Memperbarui data pengguna
         $user->name = $request->name;
         $user->bio = $request->bio;
     
         if ($request->hasFile('photo')) {
-            // Menentukan nama file unik
             $filename = time() . '.' . $request->photo->getClientOriginalExtension();
-            // Menyimpan file foto di folder public/img
             $request->photo->move(public_path('img'), $filename);
-            // Menyimpan path ke database
             $user->photo = 'img/' . $filename;
         }
     

@@ -37,8 +37,14 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 });
 
 Route::get('/authors/{user:username}', function (User $user) {
-    return view('posts', ['title' => count($user->posts) . ' articles by ' . $user->name, 'posts' => $user->posts]);
+    $posts = $user->posts()->with('author')->get();
+    return view('posts', [
+        'title' => count($user->posts) . ' articles by ' . $user->name, 
+        'posts' => $posts,
+        'author' => $user
+    ]);
 });
+
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', ['title' => count($category->posts) . ' Category : ' . $category->slug, 'posts' => $category->posts]);
 });
